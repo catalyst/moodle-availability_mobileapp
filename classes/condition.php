@@ -24,8 +24,6 @@
 
 namespace availability_mobileapp;
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
  * Mobile app access condition.
  *
@@ -35,10 +33,10 @@ defined('MOODLE_INTERNAL') || die();
  */
 class condition extends \core_availability\condition {
 
-    /**  @var int Mobile app access */
+    /** @var int Mobile app access */
     const MOBILE_APP = 1;
 
-    /**  @var int Not mobile app access */
+    /** @var int Not mobile app access */
     const NOT_MOBILE_APP = 2;
 
     /** @var int Expected access type selected */
@@ -61,7 +59,7 @@ class condition extends \core_availability\condition {
     }
 
     public function save() {
-        return (object)array('type' => 'mobileapp', 'e' => $this->accesstype);
+        return (object) ['type' => 'mobileapp', 'e' => $this->accesstype];
     }
 
     /**
@@ -74,7 +72,7 @@ class condition extends \core_availability\condition {
      * @return stdClass Object representing condition
      */
     public static function get_json($accesstype) {
-        return (object)array('type' => 'mobileapp', 'e' => (int)$accesstype);
+        return (object) ['type' => 'mobileapp', 'e' => (int) $accesstype];
     }
 
     protected function get_debug_string() {
@@ -138,5 +136,4 @@ class condition extends \core_availability\condition {
 
         return get_string($str, 'availability_mobileapp');
     }
-
 }
