@@ -93,6 +93,11 @@ class condition extends \core_availability\condition {
             return true;
         }
 
+        // If $ME is null, the path the user is accessing cannot be checked.
+        if (!isset($ME)) {
+            return false;
+        }
+
         // Check rare cases, like webservice/pluginfile.php.
         if (strpos($ME, "webservice/") !== false || strpos($ME, "tokenpluginfile.php") !== false) {
             $token = optional_param('token', '', PARAM_ALPHANUM);
